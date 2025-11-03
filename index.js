@@ -47,7 +47,7 @@ app.put('/buku/:id', async (req, res) => {
             return res.status(404).send({ message: 'Buku not found' });
         }
         await buku.update(data);
-        res.send({message: 'Buku updated successfully', komik});
+        res.send({message: 'Buku updated successfully', buku});
     } 
     catch (error) {
         res.status(500).send(err);
@@ -61,7 +61,7 @@ app.delete('/buku/:id', async (req, res) => {
         if (!buku) {
             return res.status(404).send({ message: 'Buku not found' });
         }
-        await komik.destroy();
+        await buku.destroy();
         res.send({ message: 'Buku deleted successfully' });
     } catch (error) {
         res.status(500).send(err);
