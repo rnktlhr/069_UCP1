@@ -15,8 +15,8 @@ db.sequelize.sync()
         console.log('Server Started');
     })
 })
-.catch((err) => {
- console.log(err);
+.catch((error) => {
+ console.log(error);
 });
 
 app.post('/buku', async (req, res) => {
@@ -25,16 +25,16 @@ app.post('/buku', async (req, res) => {
         const buku = await db.Buku.create(data);
         res.send(buku);
     } catch (error) {
-        res.send(err);
+        res.send(error);
     }
 });
 
 app.get('/buku',  async (req, res) => {
     try {
-        const buku = await db.buku.findAll();
+        const buku = await db.Buku.findAll();
         res.send(buku);
     }catch (error) {
-        res.send(err);
+        res.send(error);
     }
 });
 
