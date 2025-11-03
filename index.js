@@ -46,7 +46,7 @@ app.put('/buku/:id', async (req, res) => {
         if (!buku) {
             return res.status(404).send({ message: 'Buku not found' });
         }
-        await komik.update(data);
+        await buku.update(data);
         res.send({message: 'Buku updated successfully', komik});
     } 
     catch (error) {
