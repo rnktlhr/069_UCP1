@@ -22,8 +22,8 @@ db.sequelize.sync()
 app.post('/buku', async (req, res) => {
     const data = req.body;
     try {
-        const komik = await db.Buku.create(data);
-        res.send(komik);
+        const buku = await db.Buku.create(data);
+        res.send(buku);
     } catch (error) {
         res.send(err);
     }
@@ -31,8 +31,8 @@ app.post('/buku', async (req, res) => {
 
 app.get('/buku',  async (req, res) => {
     try {
-        const komik = await db.buku.findAll();
-        res.send(komik);
+        const buku = await db.buku.findAll();
+        res.send(buku);
     }catch (error) {
         res.send(err);
     }
@@ -42,8 +42,8 @@ app.put('/buku/:id', async (req, res) => {
     const id = req.params.id;
     const data = req.body;
     try {
-        const komik = await db.Buku.findByPk(id);
-        if (!komik) {
+        const buku = await db.Buku.findByPk(id);
+        if (!buku) {
             return res.status(404).send({ message: 'Buku not found' });
         }
         await komik.update(data);
@@ -57,8 +57,8 @@ app.put('/buku/:id', async (req, res) => {
 app.delete('/buku/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const komik = await db.Buku.findByPk(id);
-        if (!komik) {
+        const buku = await db.Buku.findByPk(id);
+        if (!buku) {
             return res.status(404).send({ message: 'Buku not found' });
         }
         await komik.destroy();
